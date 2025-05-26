@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:17
+    container_name: bigdata_pg
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: bigdata_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./migrations:/docker-entrypoint-initdb.d
+      - ./src:/src
+
+volumes:
+  postgres_data:
